@@ -1,7 +1,8 @@
 # OPR (Online Profile Reader)
-Read your profile (json-resume) across various version control platforms such as github, gitlab, bitbucket and more.   
+Read your profile (json-resume) across various version control platforms such as :white_check_mark: Github   :white_check_mark: Gitlab   :white_check_mark: Bitbucket and more.   
 
 [![JavaScript Style Guide](https://img.shields.io/badge/Code%20Style-Standard%20-green?style=for-the-badge&logo=javascript)](https://github.com/standard/standard) [![JSON RESUME](https://img.shields.io/badge/profile-JSON%20RESUME%20-yellow?style=for-the-badge&logo=json)](http://jsonresume.org)
+
 
 ## Installing Dependency
 ### Installation via npm
@@ -35,7 +36,7 @@ const opr = new Opr({ username: 'yourUsername' })
 // enable or disable debugging using the debug function
 opr.debug(true)
 
-// read profile from default platforms (github, bitbucket)
+// read profile from default platforms (github, gitlab, bitbucket)
 opr.read()
 
 // return the first successfull result in JSON format
@@ -62,11 +63,63 @@ Parameters that you can use when defining your OPR
         head: 'master',
         repository: 'about.me' // optional
       },
-    ]
+    ],
   })
+```
+
+```js
+  // if there is no server specified, this will be the default value
+  // excerpt from `./src/helpers/servers.js`
+  {
+    [{
+
+      {
+        name: 'github',
+        url: 'https://raw.githubusercontent.com',
+        head: 'HEAD'
+      },
+      {
+        name: 'gitlab',
+        url: 'https://gitlab.com',
+        head: '-/raw/HEAD'
+      },
+      {
+        name: 'bitbucket',
+        url: 'https://bitbucket.com',
+        head: 'raw/HEAD'
+      }
+    ],
+    repository: 'about.me'
+  }
 ```
    
 ## Advanced Usage
+### Overriding and Writing Server Variables
+:bulb: Allows to change different information for each repository
+```js
+  // USAGE
+  // !IMPORTANT: This will change the username for bitbucket server only.
+  // Default username for github will remain unchanged
+  const opr = new Opr({
+    username: 'potvillage',
+    default: {
+      bitbucket: {
+        username: 'potvillage2'
+      },
+    }
+  })
+```
+```js
+  // SAMPLE
+  {
+    default: {
+      github: {
+        username: 'your_username',
+        repository: 'your_repository'
+      },
+    }
+  }
+```
 
 ### OPR methods in a glance
 :bulb: List of available functions that you can call
@@ -83,6 +136,7 @@ Parameters that you can use when defining your OPR
   // view all raw responses from all the servers
   opr.getRawResponses()
 ```
+
 ```json
   // SAMPLE RESPONSE
   [
@@ -105,7 +159,7 @@ Parameters that you can use when defining your OPR
 ### Individual Response
 ```js
   // read result from github server
-  // allowed value : github, bitbucket
+  // allowed value : github, gitlab, bitbucket
   opr.getResponseFromRepository('github').then(res => console.log(res)).catch(e => {})
 ```
 
@@ -113,15 +167,28 @@ Parameters that you can use when defining your OPR
   // SAMPLE RESPONSE
   // returns profile found in github server only
   {
-  basics: {
-    name: 'John Doe',
-    label: 'Programmer',
-    picture: 'https:...',
-    ...
+    basics: {
+      name: 'John Doe',
+      label: 'Programmer',
+      picture: 'https:...',
+      ...
+    }
   }
 ```
-
-### Testing
+## Local Testing
+1.) Clone the repository
+```bash
+  git clone https://github.com/jkga/opr.git
+```
+2.) Go inside the directory
+```bash
+  cd opr
+```
+3.) Install Dependencies
+```bash
+  npm i
+```
+4.) Test lookup
 ```js 
   // ex. npm test potvillage
   npm test yourUsernameHere 

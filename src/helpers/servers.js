@@ -3,8 +3,12 @@ module.exports = {
     {
       name: 'github',
       url: 'https://raw.githubusercontent.com',
-      head: 'master',
-      repository: ''
+      head: 'HEAD'
+    },
+    {
+      name: 'gitlab',
+      url: 'https://gitlab.com',
+      head: '-/raw/HEAD'
     },
     {
       name: 'bitbucket',

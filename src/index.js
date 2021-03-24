@@ -1,7 +1,7 @@
-const { Profile } = require('./utils/profile')
+const { Requests } = require('./utils/requests')
 
 module.exports = {
   Opr: function (opt) {
-    return new Profile(opt)
+    return new Requests(opt)
   }
 }
