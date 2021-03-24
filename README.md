@@ -7,7 +7,7 @@ Read your profile (json-resume) across various version control platforms such as
 ## Installing Dependency
 ### Installation via npm
 ```bash
-  npm i opr
+  npm install @jkga/opr
 ```
    
 ### Installation via yarn
@@ -186,11 +186,11 @@ Parameters that you can use when defining your OPR
 ```
 3.) Install Dependencies
 ```bash
-  npm i
+  npm install
 ```
 4.) Test lookup
 ```js 
-  // ex. npm test potvillage
-  npm test yourUsernameHere 
+  // ex. npm run lookup potvillage
+  npm run lookup yourUsernameHere 
 ```
 > :bulb: You must have an existing account in github or bitbucket to make it work. For setting-up your own profile please follow this [link](https://github.com/jkga/me#quick-setup)

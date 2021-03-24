@@ -1,5 +1,5 @@
 {
-  "name": "opr",
+  "name": "@jkga/opr",
   "version": "0.1.0",
   "description": "online profile reader",
   "main": "./src/index.js",
@@ -9,7 +9,8 @@
     "opr": "./src/cli.js"
   },
   "scripts": {
-    "test": "node ./src/cli.js",
+    "test": "echo \"No test specified\"",
+    "lookup": "node ./src/cli.js",
     "check": "standard --fix"
   },
   "dependencies": {
