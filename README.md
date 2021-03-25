@@ -3,7 +3,8 @@ Read your profile (json-resume) across various version control platforms such as
 
 [![JavaScript Style Guide](https://img.shields.io/badge/Code%20Style-Standard%20-green?style=for-the-badge&logo=javascript)](https://github.com/standard/standard) [![JSON RESUME](https://img.shields.io/badge/profile-JSON%20RESUME%20-yellow?style=for-the-badge&logo=json)](http://jsonresume.org)
 
-
+   
+> :bulb: If you are using this package for the first time, make sure you have a JSON Resume in your repository. Here is a short [article](https://dev.to/jkga/read-your-resume-from-github-gitlab-and-bitbucket-all-at-once-part-1-1b4g) to help you get started.
 ## Installing Dependency
 ### Installation via npm
 ```bash
@@ -24,7 +25,6 @@ Read your profile (json-resume) across various version control platforms such as
 ```bash
   import { Opr } from 'opr'
 ```
-   
 
 ## Basic Usage
 ```js
@@ -122,12 +122,12 @@ Parameters that you can use when defining your OPR
 ```
 
 ### OPR methods in a glance
-:bulb: List of available functions that you can call
+:bulb: List of available methods available
 ```js
   const opr = new Opr({ ...options }) // initialize   
   opr.debug(true) // boolean: true | false   
   opr.getResponseFromRepository(repositoryName) // repositoryName: 'github' | 'bitbucket'   
-  opr.getResponse () // view first successfull response   
+  opr.getResponse () // return first successfull response
   opr.getResponses() // view responses from all servers [Promise { <pending> }]
   opr.getRawResponses() // raw response
 ```
@@ -137,7 +137,7 @@ Parameters that you can use when defining your OPR
   opr.getRawResponses()
 ```
 
-```json
+```js
   // SAMPLE RESPONSE
   [
     {
@@ -163,7 +163,7 @@ Parameters that you can use when defining your OPR
   opr.getResponseFromRepository('github').then(res => console.log(res)).catch(e => {})
 ```
 
-```json
+```js
   // SAMPLE RESPONSE
   // returns profile found in github server only
   {
@@ -175,6 +175,19 @@ Parameters that you can use when defining your OPR
     }
   }
 ```
+
+## CLI
+1.) Install via npm or yarn
+```bash
+  npm install @jkga/opr -g  
+``` 
+2.) Lookup
+```bash
+  // ex. opr potvillage
+  opr <yourUsernameHere>
+```
+
+
 ## Local Testing
 1.) Clone the repository
 ```bash
